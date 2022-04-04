@@ -26,7 +26,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 exports.__esModule = true;
+
 var util_1 = require("../util");
 exports.NATURES = {
     Adamant: ['atk', 'spa'],
@@ -90,9 +107,9 @@ var Natures = (function () {
 exports.Natures = Natures;
 var Nature = (function () {
     function Nature(name, _a) {
-        var plus = _a[0], minus = _a[1];
+        var _b = __read(_a, 2), plus = _b[0], minus = _b[1];
         this.kind = 'Nature';
-        this.id = util_1.toID(name);
+        this.id = (0, util_1.toID)(name);
         this.name = name;
         this.plus = plus;
         this.minus = minus;

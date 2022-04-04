@@ -14,7 +14,10 @@ export interface MoveData {
     readonly priority?: number;
     readonly self?: I.SelfOrSecondaryEffect | null;
     readonly ignoreDefensive?: boolean;
-    readonly defensiveCategory?: I.MoveCategory;
+    readonly overrideOffensiveStat?: I.StatIDExceptHP;
+    readonly overrideDefensiveStat?: I.StatIDExceptHP;
+    readonly overrideOffensivePokemon?: 'target' | 'source';
+    readonly overrideDefensivePokemon?: 'target' | 'source';
     readonly breaksProtect?: boolean;
     readonly isZ?: boolean;
     readonly isMax?: boolean;
@@ -57,7 +60,10 @@ declare class Move implements I.Move {
     readonly priority?: number;
     readonly self?: I.SelfOrSecondaryEffect | null;
     readonly ignoreDefensive?: boolean;
-    readonly defensiveCategory?: I.MoveCategory;
+    readonly overrideOffensiveStat?: I.StatIDExceptHP;
+    readonly overrideDefensiveStat?: I.StatIDExceptHP;
+    readonly overrideOffensivePokemon?: 'target' | 'source';
+    readonly overrideDefensivePokemon?: 'target' | 'source';
     readonly breaksProtect?: boolean;
     readonly isZ?: boolean;
     readonly zMove?: {

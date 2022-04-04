@@ -32,13 +32,22 @@ export declare namespace State {
         gameType: I.GameType;
         weather?: I.Weather;
         terrain?: I.Terrain;
+        isMagicRoom?: boolean;
+        isWonderRoom?: boolean;
         isGravity?: boolean;
+        isAuraBreak?: boolean;
+        isFairyAura?: boolean;
+        isDarkAura?: boolean;
         attackerSide: Side;
         defenderSide: Side;
     }
     interface Side {
         spikes?: number;
         steelsurge?: boolean;
+        vinelash?: boolean;
+        wildfire?: boolean;
+        cannonade?: boolean;
+        volcalith?: boolean;
         isSR?: boolean;
         isReflect?: boolean;
         isLightScreen?: boolean;
@@ -50,6 +59,7 @@ export declare namespace State {
         isFriendGuard?: boolean;
         isAuroraVeil?: boolean;
         isBattery?: boolean;
+        isPowerSpot?: boolean;
         isSwitching?: 'out' | 'in';
     }
 }

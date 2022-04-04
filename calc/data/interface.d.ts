@@ -6,9 +6,10 @@ export declare type ID = (string & As<'ID'>) | (string & {
 }) | '';
 export declare type GenerationNum = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 export declare type GenderName = 'M' | 'F' | 'N';
-export declare type StatName = 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe';
+export declare type StatID = 'hp' | StatIDExceptHP;
+export declare type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'spe';
 export declare type StatsTable<T = number> = {
-    [stat in StatName]: T;
+    [stat in StatID]: T;
 };
 export declare type AbilityName = string & As<'AbilityName'>;
 export declare type ItemName = string & As<'ItemName'>;
@@ -92,7 +93,10 @@ export interface Move extends Data<MoveName> {
     readonly priority?: number;
     readonly self?: SelfOrSecondaryEffect | null;
     readonly ignoreDefensive?: boolean;
-    readonly defensiveCategory?: MoveCategory;
+    readonly overrideOffensiveStat?: StatIDExceptHP;
+    readonly overrideDefensiveStat?: StatIDExceptHP;
+    readonly overrideOffensivePokemon?: 'target' | 'source';
+    readonly overrideDefensivePokemon?: 'target' | 'source';
     readonly breaksProtect?: boolean;
     readonly isZ?: boolean | string;
     readonly zMove?: {
@@ -138,6 +142,6 @@ export interface Natures {
 }
 export interface Nature extends Data<NatureName> {
     readonly kind: 'Nature';
-    readonly plus?: StatName;
-    readonly minus?: StatName;
+    readonly plus?: StatID;
+    readonly minus?: StatID;
 }

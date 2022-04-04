@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -26,7 +37,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var e_1, _a;
 exports.__esModule = true;
+
 var util_1 = require("../util");
 var RBY = {
     '???': {
@@ -317,7 +341,7 @@ var RBY = {
         Dragon: 2
     }
 };
-var GSC = util_1.extend(true, {}, RBY, {
+var GSC = (0, util_1.extend)(true, {}, RBY, {
     '???': { Dark: 1, Steel: 1 },
     Normal: { Dark: 1, Steel: 0.5 },
     Grass: { Dark: 1, Steel: 0.5 },
@@ -378,7 +402,7 @@ var GSC = util_1.extend(true, {}, RBY, {
 var ADV = GSC;
 var DPP = GSC;
 var BW = GSC;
-var XY = util_1.extend(true, {}, GSC, {
+var XY = (0, util_1.extend)(true, {}, GSC, {
     '???': { Fairy: 1 },
     Normal: { Fairy: 1 },
     Grass: { Fairy: 1 },
@@ -459,20 +483,29 @@ exports.Types = Types;
 var Type = (function () {
     function Type(name, effectiveness) {
         this.kind = 'Type';
-        this.id = util_1.toID(name);
+        this.id = (0, util_1.toID)(name);
         this.name = name;
         this.effectiveness = effectiveness;
     }
     return Type;
 }());
 var TYPES_BY_ID = [];
-for (var _i = 0, TYPE_CHART_1 = exports.TYPE_CHART; _i < TYPE_CHART_1.length; _i++) {
-    var typeChart = TYPE_CHART_1[_i];
-    var map = {};
-    for (var type in typeChart) {
-        var t = new Type(type, Object.assign({}, typeChart[type]));
-        map[t.id] = t;
+try {
+    for (var TYPE_CHART_1 = __values(exports.TYPE_CHART), TYPE_CHART_1_1 = TYPE_CHART_1.next(); !TYPE_CHART_1_1.done; TYPE_CHART_1_1 = TYPE_CHART_1.next()) {
+        var typeChart = TYPE_CHART_1_1.value;
+        var map = {};
+        for (var type in typeChart) {
+            var t = new Type(type, __assign({}, typeChart[type]));
+            map[t.id] = t;
+        }
+        TYPES_BY_ID.push(map);
     }
-    TYPES_BY_ID.push(map);
+}
+catch (e_1_1) { e_1 = { error: e_1_1 }; }
+finally {
+    try {
+        if (TYPE_CHART_1_1 && !TYPE_CHART_1_1.done && (_a = TYPE_CHART_1["return"])) _a.call(TYPE_CHART_1);
+    }
+    finally { if (e_1) throw e_1.error; }
 }
 //# sourceMappingURL=types.js.map

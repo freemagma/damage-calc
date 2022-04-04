@@ -130,7 +130,7 @@
             <input type="text" class="set-selector calc-trigger" />
             <span id="importedSetsOptions" style="width:auto; display:none">
                 <input type="checkbox" id="importedSets" /> Only show imported sets <br />
-                <button id="clearSets">Clear Custom Sets</button>
+                <button id="clearSets">Clear Imported Sets</button>
             </span>
             <div class="info-group top">
                 <div>
@@ -648,7 +648,7 @@
                 <hr class="gen-specific g6 g7 g8" />
                 <div aria-labelledby="selectWeatherInstruction" role="radiogroup">
                     <span class="visually-hidden" id="selectWeatherInstruction">Select the current weather condition.</span>
-                    <div  class="gen-specific g3 g4 g5 g6 g7 g8" style="width: 22.2em; margin: 5px auto;" title="Select the current weather condition.">
+                    <div class="gen-specific g3 g4 g5 g6 g7 g8" style="width: 22.2em; margin: 5px auto;" title="Select the current weather condition.">
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="" id="clear" checked="checked" />
                         <label class="btn btn-small btn-left" for="clear">None</label>
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Sun" id="sun" />
@@ -679,6 +679,14 @@
                     <label class="btn btn-small btn-mid" for="gscRain">Rain</label>
                     <input class="visually-hidden calc-trigger" type="radio" name="gscWeather" value="Sand" id="gscSand" />
                     <label class="btn btn-small btn-right" for="gscSand">Sand</label>
+                </div>
+                <div class="gen-specific g5 g6 g7 g8" style="width: 22.2em; margin: 5px auto; display: inline-block;">
+                    <span hidden id="magicRoomInstruction">Is Magic Room in effect?</span>
+                    <span hidden id="wonderRoomInstruction">Is Wonder Room in effect?</span>
+                    <input aria-describedby="magicRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="magicroom" />
+                    <label class="btn btn-xxxwide btn-left" for="magicroom">Magic Room</label>
+                    <input aria-describedby="wonderRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="wonderroom" />
+                    <label class="btn btn-xxxwide btn-right" for="wonderroom">Wonder Room</label>
                 </div>
                 <div class="gen-specific g4 g5 g6 g7 g8" style="width: 5.3em; margin: 5px auto;" title="Is gravity in effect?">
                     <span hidden id="gravityInstruction">Is gravity in effect?</span>
@@ -714,6 +722,36 @@
                             <td><div class="right" title="Is Steelsurge affecting this side of the field?">
                                 <input aria-describedby="selectSteelsurgeInstruction" class="visually-hidden calc-trigger" type="checkbox" id="steelsurgeR" />
                                 <label class="btn btn-xwide" for="steelsurgeR">Steelsurge</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g8">
+                            <div hidden id="selectVinefireInstruction">Is Vine Lash and/or Wildfire affecting this side of the field?</div>
+                            <td><div class="left" title="Is Vine Lash/Wildfire affecting this side of the field?">
+                                <input aria-describedby="selectVinefireInstruction" class="visually-hidden calc-trigger" type="checkbox" id="vinelashL" />
+                                <label class="btn btn-wide btn-left" for="vinelashL">Vine Lash</label>
+                                <input aria-describedby="selectVinefireInstruction" class="visually-hidden calc-trigger" type="checkbox" id="wildfireL" />
+                                <label class="btn btn-right" for="wildfireL">Wildfire</label>
+                            </div></td>
+                            <td><div class="right" title="Is Vine Lash/Wildfire affecting this side of the field?">
+                                <input aria-describedby="selectVinefireInstruction" class="visually-hidden calc-trigger" type="checkbox" id="wildfireR" />
+                                <label class="btn btn-left" for="wildfireR">Wildfire</label>
+                                <input aria-describedby="selectVinefireInstruction" class="visually-hidden calc-trigger" type="checkbox" id="vinelashR" />
+                                <label class="btn btn-wide btn-right" for="vinelashR">Vine Lash</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g8">
+                            <div hidden id="selectCannonlithInstruction">Is Cannonade and/or Volcalith affecting this side of the field?</div>
+                            <td><div class="left" title="Is Cannonade/Volcalith affecting this side of the field?">
+                                <input aria-describedby="selectCannonlithInstruction" class="visually-hidden calc-trigger" type="checkbox" id="cannonadeL" />
+                                <label class="btn btn-wide btn-left" for="cannonadeL">Cannonade</label>
+                                <input aria-describedby="selectCannonlithInstruction" class="visually-hidden calc-trigger" type="checkbox" id="volcalithL" />
+                                <label class="btn btn-right" for="volcalithL">Volcalith</label>
+                            </div></td>
+                            <td><div class="right" title="Is Cannonade/Volcalith affecting this side of the field?">
+                                <input aria-describedby="selectCannonlithInstruction" class="visually-hidden calc-trigger" type="checkbox" id="volcalithR" />
+                                <label class="btn btn-left" for="volcalithR">Volcalith</label>
+                                <input aria-describedby="selectCannonlithInstruction" class="visually-hidden calc-trigger" type="checkbox" id="cannonadeR" />
+                                <label class="btn btn-wide btn-right" for="cannonadeR">Cannonade</label>
                             </div></td>
                         </tr>
                         <tr class="gen-specific g3 g4 g5 g6 g7 g8">
@@ -863,6 +901,17 @@
                                 <label class="btn btn-xxwide" for="batteryR">Battery</label>
                             </div></td>
                         </tr>
+                        <tr class="gen-specific g8">
+                          <td><div class="left" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                              <div hidden id="selectPowerSpotInstruction">Is the Pok&eacute;mon boosted by an ally's Power Spot ability?</div>
+                                <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotL" />
+                                <label class="btn btn-xxwide" for="powerSpotL">Power Spot</label>
+                              </div></td>
+                            <td><div class="right" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                                <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotR" />
+                                <label class="btn btn-xxwide" for="powerSpotR">Power Spot</label>
+                            </div></td>
+                        </tr>
                         <tr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
                             <td><div class="left" title="Is the defending Pok&eacute;mon switching out?">
                               <div hidden id="selectSwitchingInstruction">Is the defending Pok&eacute;mon switching out?</div>
@@ -891,6 +940,7 @@
                 <legend align="center">Import / Export</legend>
                 <div id="import-1_wrapper" class="dataTables_wrapper no-footer">
                     <form class="import-team">
+                        <input class="import-name-text" value="Custom Set"></input>
                         <textarea class="import-team-text"></textarea>
                         <!--<button style='position:absolute' class='bs-btn bs-btn-default'>Import</button>-->
                     </form>
@@ -904,7 +954,7 @@
             <input type="text" class="set-selector calc-trigger" />
             <span id="importedSetsOptions" style="width:auto; display:none">
                 <input type="checkbox" id="importedSets" /> Only show imported sets <br />
-                <button id="clearSets">Clear Custom Sets</button>
+                <button id="clearSets">Clear Imported Sets</button>
             </span>
             <div class="info-group top">
                 <div>
@@ -1405,6 +1455,9 @@
     <script type="text/javascript" src="./js/vendor/select2/select2.min.js"></script>
     <script type="text/javascript" src="./js/vendor/url-search-params-0.1.2.min.js"></script>
     <script type="text/javascript">
+        this.__createBinding = function(o, m, k) {
+            o[k] = m[k];
+        };
         var calc = exports = {};
         function require() { return exports };
     </script>
@@ -1445,7 +1498,7 @@
     <script type="text/javascript" src="./js/moveset_import.js?"></script>
 </div>
 
-<div class="credits">Created by Honko, maintained by Austin and pre
+<div class="credits">Created by Honko, maintained by Austin and Kris
     <ul><li><a href="https://github.com/smogon/damage-calc/contributors" target="_blank">Contributors</a></li>
     <li><a href="https://www.smogon.com/forums/threads/pok%C3%A9mon-showdown-damage-calculator.3593546/" target="_blank">Bug Reports</a></li>
     <li><a href="https://github.com/smogon/damage-calc" target="_blank">GitHub repository</a></li></ul>

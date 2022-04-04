@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Pok&eacute;mon Damage Calculator</title>
     <link type="text/css" rel="stylesheet" href="./js/vendor/select2/select2.css" />
-    <link type="text/css" rel="stylesheet" href="./css/main.css?dfcde920" />
+    <link type="text/css" rel="stylesheet" href="./css/main.css?75385559" />
     <link type="text/css" rel="stylesheet" href="./css/vendor/bootstrap.css" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-26211653-3"></script>
@@ -694,6 +694,14 @@
                     <input class="visually-hidden calc-trigger" type="radio" name="gscWeather" value="Sand" id="gscSand" />
                     <label class="btn btn-small btn-right" for="gscSand">Sand</label>
                 </div>
+                <div class="gen-specific g5 g6 g7 g8" style="width: 22.2em; margin: 5px auto; display: inline-block;">
+                    <span hidden id="magicRoomInstruction">Is Magic Room in effect?</span>
+                    <span hidden id="wonderRoomInstruction">Is Wonder Room in effect?</span>
+                    <input aria-describedby="magicRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="magicroom" />
+                    <label class="btn btn-xxxwide btn-left" for="magicroom">Magic Room</label>
+                    <input aria-describedby="wonderRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="wonderroom" />
+                    <label class="btn btn-xxxwide btn-right" for="wonderroom">Wonder Room</label>
+                </div>
                 <div class="gen-specific g4 g5 g6 g7 g8" style="width: 5.3em; margin: 5px auto;" title="Is gravity in effect?">
                     <span hidden id="gravityInstruction">Is gravity in effect?</span>
                     <input aria-describedby="gravityInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gravity" />
@@ -877,6 +885,17 @@
                                 <label class="btn btn-xxwide" for="batteryR">Battery</label>
                             </div></td>
                         </tr>
+                        <tr class="gen-specific g8">
+                            <td><div class="left" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                                <div hidden id="selectPowerSpotInstruction">Is the Pok&eacute;mon boosted by an ally's Power Spot ability?</div>
+                                  <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotL" />
+                                  <label class="btn btn-xxwide" for="powerSpotL">Power Spot</label>
+                                </div></td>
+                              <td><div class="right" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                                  <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotR" />
+                                  <label class="btn btn-xxwide" for="powerSpotR">Power Spot</label>
+                              </div></td>
+                          </tr>
                         <tr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
                             <td><div class="left" title="Is the defending Pok&eacute;mon switching out?">
                               <div hidden id="selectSwitchingInstruction">Is the defending Pok&eacute;mon switching out?</div>
@@ -886,14 +905,6 @@
                             <td><div class="right" title="Is the defending Pok&eacute;mon switching out?">
                                 <input aria-describedby="selectSwitchingInstruction" class="visually-hidden calc-trigger" type="checkbox" id="switchingR" />
                                 <label class="btn btn-xxwide" for="switchingR">Switching Out</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Export the leftmost Pok&eacute;mon set">
-                                <button id="exportL">Export</button>
-                            </div></td>
-                            <td><div class="right" title="Export the rightmost Pok&eacute;mon set">
-                                <button id="exportR">Export</button>
                             </div></td>
                         </tr>
                     </tbody>
@@ -1418,47 +1429,51 @@
     <script type="text/javascript" src="./js/vendor/select2/select2.min.js"></script>
     <script type="text/javascript" src="./js/vendor/url-search-params-0.1.2.min.js"></script>
     <script type="text/javascript">
+        this.__createBinding = function(o, m, k, k2) {
+            if (k2 === undefined) k2 = k;
+            o[k2] = m[k];
+        };
         var calc = exports = {};
         function require() { return exports };
     </script>
-    <script type="text/javascript" src="./calc/util.js?f32024e7"></script>
-    <script type="text/javascript" src="./calc/stats.js?139f6614"></script>
-    <script type="text/javascript" src="./calc/data/species.js?f06b0fe7"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen8.js?4157bdc5"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen7.js?94c44183"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen6.js?8960775d"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen5.js?c1095096"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen4.js?188963a9"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen3.js?a0ddebcb"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen2.js?baeb7f79"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen1.js?f421608f"></script>
-    <script type="text/javascript" src="./calc/data/types.js?a1c6bc98"></script>
-    <script type="text/javascript" src="./calc/data/natures.js?dc7f2fe5"></script>
-    <script type="text/javascript" src="./calc/data/abilities.js?d1685f09"></script>
-    <script type="text/javascript" src="./calc/data/moves.js?e383f5a1"></script>
-    <script type="text/javascript" src="./calc/data/items.js?d15f1d77"></script>
-    <script type="text/javascript" src="./calc/data/index.js?3dac0698"></script>
-    <script type="text/javascript" src="./calc/move.js?cfb7f07d"></script>
-    <script type="text/javascript" src="./calc/pokemon.js?f28f54fd"></script>
-    <script type="text/javascript" src="./calc/field.js?f728fcaf"></script>
-    <script type="text/javascript" src="./calc/items.js?dd8957a9"></script>
-    <script type="text/javascript" src="./calc/mechanics/util.js?71e2d9e2"></script>
-    <script type="text/javascript" src="./calc/mechanics/gen78.js?b05ba3f4"></script>
-    <script type="text/javascript" src="./calc/mechanics/gen56.js?338ee8f0"></script>
-    <script type="text/javascript" src="./calc/mechanics/gen4.js?b34181f7"></script>
-    <script type="text/javascript" src="./calc/mechanics/gen3.js?7ad9e8cd"></script>
-    <script type="text/javascript" src="./calc/mechanics/gen12.js?41a2bbd5"></script>
-    <script type="text/javascript" src="./calc/calc.js?29d1338c"></script>
-    <script type="text/javascript" src="./calc/desc.js?587e25b7"></script>
-    <script type="text/javascript" src="./calc/result.js?41d4f6be"></script>
-    <script type="text/javascript" src="./calc/adaptable.js?cd3e6f17"></script>
-    <script type="text/javascript" src="./calc/index.js?a55c72a7"></script>
-    <script type="text/javascript" src="./js/shared_controls.js?0aa5c768"></script>
+    <script type="text/javascript" src="./calc/util.js?51463f0d"></script>
+    <script type="text/javascript" src="./calc/stats.js?d44b29f3"></script>
+    <script type="text/javascript" src="./calc/data/species.js?d41f9cf0"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen8randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen7randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen6randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen5randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen4randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen3randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen2randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen1randombattle.js?"></script>
+    <script type="text/javascript" src="./calc/data/types.js?f63f9f6e"></script>
+    <script type="text/javascript" src="./calc/data/natures.js?18c0ef89"></script>
+    <script type="text/javascript" src="./calc/data/abilities.js?24311b00"></script>
+    <script type="text/javascript" src="./calc/data/moves.js?e596a469"></script>
+    <script type="text/javascript" src="./calc/data/items.js?6ac2ddb1"></script>
+    <script type="text/javascript" src="./calc/data/index.js?abecbd82"></script>
+    <script type="text/javascript" src="./calc/move.js?f26a3c9d"></script>
+    <script type="text/javascript" src="./calc/pokemon.js?12407d54"></script>
+    <script type="text/javascript" src="./calc/field.js?c388c482"></script>
+    <script type="text/javascript" src="./calc/items.js?10064fda"></script>
+    <script type="text/javascript" src="./calc/mechanics/util.js?44fe845b"></script>
+    <script type="text/javascript" src="./calc/mechanics/gen78.js?b4bcea85"></script>
+    <script type="text/javascript" src="./calc/mechanics/gen56.js?de256e12"></script>
+    <script type="text/javascript" src="./calc/mechanics/gen4.js?6fa5ef79"></script>
+    <script type="text/javascript" src="./calc/mechanics/gen3.js?9fe5a315"></script>
+    <script type="text/javascript" src="./calc/mechanics/gen12.js?10d67a75"></script>
+    <script type="text/javascript" src="./calc/calc.js?b9296a16"></script>
+    <script type="text/javascript" src="./calc/desc.js?d4085076"></script>
+    <script type="text/javascript" src="./calc/result.js?9f8881b5"></script>
+    <script type="text/javascript" src="./calc/adaptable.js?92e49194"></script>
+    <script type="text/javascript" src="./calc/index.js?0b1745b9"></script>
+    <script type="text/javascript" src="./js/shared_controls.js?69bfa511"></script>
     <script type="text/javascript" src="./js/index_randoms_controls.js?c05b55a3"></script>
-    <script type="text/javascript" src="./js/moveset_import.js?a0c32dc6"></script>
+    <script type="text/javascript" src="./js/moveset_import.js?50241636"></script>
 </div>
 
-<div class="credits">Created by Honko, maintained by Austin and pre
+<div class="credits">Created by Honko, maintained by Austin and Kris
     <ul><li><a href="https://github.com/smogon/damage-calc/contributors" target="_blank">Contributors</a></li>
     <li><a href="https://www.smogon.com/forums/threads/pok%C3%A9mon-showdown-damage-calculator.3593546/" target="_blank">Bug Reports</a></li>
     <li><a href="https://github.com/smogon/damage-calc" target="_blank">GitHub repository</a></li></ul>

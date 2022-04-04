@@ -14,11 +14,11 @@ export declare class Result {
     rawDesc: RawDesc;
     constructor(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, field: Field, damage: Damage, rawDesc: RawDesc);
     desc(): string;
-    range(): number[] | [[number, number], [number, number]];
+    range(): [number, number];
     fullDesc(notation?: string, err?: boolean): string;
     moveDesc(notation?: string): string;
     recovery(notation?: string): {
-        recovery: number[];
+        recovery: [number, number];
         text: string;
     };
     recoil(notation?: string): {

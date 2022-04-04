@@ -4,7 +4,8 @@ function placeBsBtn() {
 
 	$("#import.bs-btn").click(function () {
 		var pokes = document.getElementsByClassName("import-team-text")[0].value;
-		addSets(pokes);
+		var name = document.getElementsByClassName("import-name-text")[0].value.trim() === "" ? "Custom Set" : document.getElementsByClassName("import-name-text")[0].value;
+		addSets(pokes, name);
 	});
 }
 
@@ -13,21 +14,39 @@ function ExportPokemon(pokeInfo) {
 	var EV_counter = 0;
 	var finalText = "";
 	finalText = pokemon.name + (pokemon.item ? " @ " + pokemon.item : "") + "\n";
+	finalText += "Level: " + pokemon.level + "\n";
 	finalText += pokemon.nature && gen > 2 ? pokemon.nature + " Nature" + "\n" : "";
 	finalText += pokemon.ability ? "Ability: " + pokemon.ability + "\n" : "";
 	if (gen > 2) {
-		finalText += "EVs: ";
 		var EVs_Array = [];
 		for (var stat in pokemon.evs) {
-			if (pokemon.evs[stat]) {
-				EVs_Array.push(pokemon.evs[stat] + " " + calc.Stats.displayStat(stat));
-				EV_counter += pokemon.evs[stat];
-				if (EV_counter > 510) break;
+			var ev = pokemon.evs[stat] ? pokemon.evs[stat] : 0;
+			if (ev > 0) {
+				EVs_Array.push(ev + " " + calc.Stats.displayStat(stat));
 			}
+			EV_counter += ev;
+			if (EV_counter > 510) break;
 		}
-		finalText += serialize(EVs_Array, " / ");
+		if (EVs_Array.length > 0) {
+			finalText += "EVs: ";
+			finalText += serialize(EVs_Array, " / ");
+			finalText += "\n";
+		}
+	}
+
+	var IVs_Array = [];
+	for (var stat in pokemon.ivs) {
+		var iv = pokemon.ivs[stat] ? pokemon.ivs[stat] : 0;
+		if (iv < 31) {
+			IVs_Array.push(iv + " " + calc.Stats.displayStat(stat));
+		}
+	}
+	if (IVs_Array.length > 0) {
+		finalText += "IVs: ";
+		finalText += serialize(IVs_Array, " / ");
 		finalText += "\n";
 	}
+
 	for (var i = 0; i < 4; i++) {
 		var moveName = pokemon.moves[i].name;
 		if (moveName !== "(No Move)") {
@@ -35,7 +54,7 @@ function ExportPokemon(pokeInfo) {
 		}
 	}
 	finalText = finalText.trim();
-	$("textarea.import-team-text").text(finalText);
+	$("textarea.import-team-text").val(finalText);
 }
 
 $("#exportL").click(function () {
@@ -84,6 +103,7 @@ function getStats(currentPoke, rows, offset) {
 	currentPoke.nature = "Serious";
 	var currentEV;
 	var currentIV;
+	var currentAbility;
 	var currentNature;
 	currentPoke.level = 100;
 	for (var x = offset; x < offset + 8; x++) {
@@ -115,6 +135,11 @@ function getStats(currentPoke, rows, offset) {
 			break;
 
 		}
+		currentAbility = rows[x] ? rows[x].trim().split(":") : '';
+		if (currentAbility[0] == "Ability") {
+			currentPoke.ability = currentAbility[1].trim();
+		}
+
 		currentNature = rows[x] ? rows[x].trim().split(" ") : '';
 		if (currentNature[1] == "Nature") {
 			currentPoke.nature = currentNature[0];
@@ -155,14 +180,14 @@ function getMoves(currentPoke, rows, offset) {
 function addToDex(poke) {
 	var dexObject = {};
 	if ($("#randoms").prop("checked")) {
-		if (RANDOM_SS[poke.name] == undefined) RANDOM_SS[poke.name] = {};
-		if (RANDOM_SM[poke.name] == undefined) RANDOM_SM[poke.name] = {};
-		if (RANDOM_XY[poke.name] == undefined) RANDOM_XY[poke.name] = {};
-		if (RANDOM_BW[poke.name] == undefined) RANDOM_BW[poke.name] = {};
-		if (RANDOM_DPP[poke.name] == undefined) RANDOM_DPP[poke.name] = {};
-		if (RANDOM_ADV[poke.name] == undefined) RANDOM_ADV[poke.name] = {};
-		if (RANDOM_GSC[poke.name] == undefined) RANDOM_GSC[poke.name] = {};
-		if (RANDOM_RBY[poke.name] == undefined) RANDOM_RBY[poke.name] = {};
+		if (GEN8RANDOMBATTLE[poke.name] == undefined) GEN8RANDOMBATTLE[poke.name] = {};
+		if (GEN7RANDOMBATTLE[poke.name] == undefined) GEN7RANDOMBATTLE[poke.name] = {};
+		if (GEN6RANDOMBATTLE[poke.name] == undefined) GEN6RANDOMBATTLE[poke.name] = {};
+		if (GEN5RANDOMBATTLE[poke.name] == undefined) GEN5RANDOMBATTLE[poke.name] = {};
+		if (GEN4RANDOMBATTLE[poke.name] == undefined) GEN4RANDOMBATTLE[poke.name] = {};
+		if (GEN3RANDOMBATTLE[poke.name] == undefined) GEN3RANDOMBATTLE[poke.name] = {};
+		if (GEN2RANDOMBATTLE[poke.name] == undefined) GEN2RANDOMBATTLE[poke.name] = {};
+		if (GEN1RANDOMBATTLE[poke.name] == undefined) GEN1RANDOMBATTLE[poke.name] = {};
 	} else {
 		if (SETDEX_SS[poke.name] == undefined) SETDEX_SS[poke.name] = {};
 		if (SETDEX_SM[poke.name] == undefined) SETDEX_SM[poke.name] = {};
@@ -226,7 +251,7 @@ function updateDex(customsets) {
 	localStorage.customsets = JSON.stringify(customsets);
 }
 
-function addSets(pokes) {
+function addSets(pokes, name) {
 	var rows = pokes.split("\n");
 	var currentRow;
 	var currentPoke;
@@ -242,7 +267,7 @@ function addSets(pokes) {
 				if (j === 1 && currentRow[0].trim()) {
 					currentPoke.nameProp = currentRow[0].trim();
 				} else {
-					currentPoke.nameProp = "Custom Set";
+					currentPoke.nameProp = name;
 				}
 				currentPoke.isCustomSet = true;
 				currentPoke.ability = getAbility(rows[i + 1].split(":"));

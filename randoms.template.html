@@ -694,6 +694,14 @@
                     <input class="visually-hidden calc-trigger" type="radio" name="gscWeather" value="Sand" id="gscSand" />
                     <label class="btn btn-small btn-right" for="gscSand">Sand</label>
                 </div>
+                <div class="gen-specific g5 g6 g7 g8" style="width: 22.2em; margin: 5px auto; display: inline-block;">
+                    <span hidden id="magicRoomInstruction">Is Magic Room in effect?</span>
+                    <span hidden id="wonderRoomInstruction">Is Wonder Room in effect?</span>
+                    <input aria-describedby="magicRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="magicroom" />
+                    <label class="btn btn-xxxwide btn-left" for="magicroom">Magic Room</label>
+                    <input aria-describedby="wonderRoomInstruction" class="visually-hidden calc-trigger" type="checkbox" id="wonderroom" />
+                    <label class="btn btn-xxxwide btn-right" for="wonderroom">Wonder Room</label>
+                </div>
                 <div class="gen-specific g4 g5 g6 g7 g8" style="width: 5.3em; margin: 5px auto;" title="Is gravity in effect?">
                     <span hidden id="gravityInstruction">Is gravity in effect?</span>
                     <input aria-describedby="gravityInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gravity" />
@@ -877,6 +885,17 @@
                                 <label class="btn btn-xxwide" for="batteryR">Battery</label>
                             </div></td>
                         </tr>
+                        <tr class="gen-specific g8">
+                            <td><div class="left" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                                <div hidden id="selectPowerSpotInstruction">Is the Pok&eacute;mon boosted by an ally's Power Spot ability?</div>
+                                  <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotL" />
+                                  <label class="btn btn-xxwide" for="powerSpotL">Power Spot</label>
+                                </div></td>
+                              <td><div class="right" title="Is the Pok&eacute;mon boosted by an ally's Power Spot ability?">
+                                  <input aria-describedby="selectPowerSpotInstruction" class="visually-hidden calc-trigger" type="checkbox" id="powerSpotR" />
+                                  <label class="btn btn-xxwide" for="powerSpotR">Power Spot</label>
+                              </div></td>
+                          </tr>
                         <tr class="gen-specific g2 g3 g4 g5 g6 g7 g8">
                             <td><div class="left" title="Is the defending Pok&eacute;mon switching out?">
                               <div hidden id="selectSwitchingInstruction">Is the defending Pok&eacute;mon switching out?</div>
@@ -886,14 +905,6 @@
                             <td><div class="right" title="Is the defending Pok&eacute;mon switching out?">
                                 <input aria-describedby="selectSwitchingInstruction" class="visually-hidden calc-trigger" type="checkbox" id="switchingR" />
                                 <label class="btn btn-xxwide" for="switchingR">Switching Out</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Export the leftmost Pok&eacute;mon set">
-                                <button id="exportL">Export</button>
-                            </div></td>
-                            <td><div class="right" title="Export the rightmost Pok&eacute;mon set">
-                                <button id="exportR">Export</button>
                             </div></td>
                         </tr>
                     </tbody>
@@ -1418,20 +1429,24 @@
     <script type="text/javascript" src="./js/vendor/select2/select2.min.js"></script>
     <script type="text/javascript" src="./js/vendor/url-search-params-0.1.2.min.js"></script>
     <script type="text/javascript">
+        this.__createBinding = function(o, m, k, k2) {
+            if (k2 === undefined) k2 = k;
+            o[k2] = m[k];
+        };
         var calc = exports = {};
         function require() { return exports };
     </script>
     <script type="text/javascript" src="./calc/util.js?"></script>
     <script type="text/javascript" src="./calc/stats.js?"></script>
     <script type="text/javascript" src="./calc/data/species.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen8.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen7.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen6.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen5.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen4.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen3.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen2.js?"></script>
-    <script type="text/javascript" src="./js/data/randoms/gen1.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen8randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen7randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen6randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen5randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen4randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen3randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen2randombattle.js?"></script>
+    <script type="text/javascript" src="https://pkmn.github.io/randbats/data/gen1randombattle.js?"></script>
     <script type="text/javascript" src="./calc/data/types.js?"></script>
     <script type="text/javascript" src="./calc/data/natures.js?"></script>
     <script type="text/javascript" src="./calc/data/abilities.js?"></script>
@@ -1458,7 +1473,7 @@
     <script type="text/javascript" src="./js/moveset_import.js?"></script>
 </div>
 
-<div class="credits">Created by Honko, maintained by Austin and pre
+<div class="credits">Created by Honko, maintained by Austin and Kris
     <ul><li><a href="https://github.com/smogon/damage-calc/contributors" target="_blank">Contributors</a></li>
     <li><a href="https://www.smogon.com/forums/threads/pok%C3%A9mon-showdown-damage-calculator.3593546/" target="_blank">Bug Reports</a></li>
     <li><a href="https://github.com/smogon/damage-calc" target="_blank">GitHub repository</a></li></ul>

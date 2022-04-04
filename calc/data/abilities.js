@@ -26,7 +26,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var e_1, _a, e_2, _b;
 exports.__esModule = true;
+
 var util_1 = require("../util");
 var RBY = [];
 var GSC = [];
@@ -193,7 +206,6 @@ var BW = DPP.concat([
     'Sand Rush',
     'Sap Sipper',
     'Sheer Force',
-    'Storm Drain',
     'Telepathy',
     'Teravolt',
     'Toxic Boost',
@@ -278,10 +290,16 @@ var SM = XY.concat([
     'Wimp Out',
 ]);
 var SS = SM.concat([
+    'As One (Glastrier)',
+    'As One (Spectrier)',
     'Ball Fetch',
+    'Chilling Neigh',
     'Cotton Down',
+    'Curious Medicine',
     'Dauntless Shield',
+    'Dragon\'s Maw',
     'Gorilla Tactics',
+    'Grim Neigh',
     'Gulp Missile',
     'Hunger Switch',
     'Ice Face',
@@ -296,12 +314,15 @@ var SS = SM.concat([
     'Power Spot',
     'Propeller Tail',
     'Punk Rock',
+    'Quick Draw',
     'Ripen',
     'Sand Spit',
     'Screen Cleaner',
     'Stalwart',
     'Steam Engine',
     'Steely Spirit',
+    'Transistor',
+    'Unseen Fist',
     'Wandering Spirit',
 ]);
 exports.ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS];
@@ -342,20 +363,38 @@ exports.Abilities = Abilities;
 var Ability = (function () {
     function Ability(name) {
         this.kind = 'Ability';
-        this.id = util_1.toID(name);
+        this.id = (0, util_1.toID)(name);
         this.name = name;
     }
     return Ability;
 }());
 var ABILITIES_BY_ID = [];
-for (var _i = 0, ABILITIES_1 = exports.ABILITIES; _i < ABILITIES_1.length; _i++) {
-    var abilities = ABILITIES_1[_i];
-    var map = {};
-    for (var _a = 0, abilities_1 = abilities; _a < abilities_1.length; _a++) {
-        var ability = abilities_1[_a];
-        var a = new Ability(ability);
-        map[a.id] = a;
+try {
+    for (var ABILITIES_1 = __values(exports.ABILITIES), ABILITIES_1_1 = ABILITIES_1.next(); !ABILITIES_1_1.done; ABILITIES_1_1 = ABILITIES_1.next()) {
+        var abilities = ABILITIES_1_1.value;
+        var map = {};
+        try {
+            for (var abilities_1 = (e_2 = void 0, __values(abilities)), abilities_1_1 = abilities_1.next(); !abilities_1_1.done; abilities_1_1 = abilities_1.next()) {
+                var ability = abilities_1_1.value;
+                var a = new Ability(ability);
+                map[a.id] = a;
+            }
+        }
+        catch (e_2_1) { e_2 = { error: e_2_1 }; }
+        finally {
+            try {
+                if (abilities_1_1 && !abilities_1_1.done && (_b = abilities_1["return"])) _b.call(abilities_1);
+            }
+            finally { if (e_2) throw e_2.error; }
+        }
+        ABILITIES_BY_ID.push(map);
     }
-    ABILITIES_BY_ID.push(map);
+}
+catch (e_1_1) { e_1 = { error: e_1_1 }; }
+finally {
+    try {
+        if (ABILITIES_1_1 && !ABILITIES_1_1.done && (_a = ABILITIES_1["return"])) _a.call(ABILITIES_1);
+    }
+    finally { if (e_1) throw e_1.error; }
 }
 //# sourceMappingURL=abilities.js.map

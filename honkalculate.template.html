@@ -774,6 +774,16 @@
                             <input class="visually-hidden" type="checkbox" id="batteryR" />
                             <label class="btn btn-xxwide" for="batteryR">Battery</label>
                         </div>
+                        <div class="btn-group gen-specific g8">
+                            <div class="left" title="Has this Pok&eacute;mon's power been boosted by an ally's Power Spot ability?">
+                                <input class="visually-hidden" type="checkbox" id="powerSpotL" />
+                                <label class="btn btn-xxwide" for="powerSpotL">Power Spot</label>
+                            </div>
+                            <div class="right" title="Has this Pok&eacute;mon's power been boosted by an ally's Power Spot ability?">
+                                <input class="visually-hidden" type="checkbox" id="powerSpotR" />
+                                <label class="btn btn-xxwide" for="powerSpotR">Power Spot</label>
+                            </div>
+                        </div>
                         <div class="btn-group gen-specific g2 g3 g4 g5 g6 g7 g8">
                             <div class="left" title="Is the defending Pok&eacute;mon switching out?">
                                 <input class="visually-hidden" type="checkbox" id="switchingL" />
@@ -819,6 +829,10 @@
     <script type="text/javascript" src="./js/vendor/select2/select2.min.js"></script>
     <script type="text/javascript" src="./js/vendor/url-search-params-0.1.2.min.js"></script>
     <script type="text/javascript">
+        this.__createBinding = function(o, m, k, k2) {
+            if (k2 === undefined) k2 = k;
+            o[k2] = m[k];
+        };
         var calc = exports = {};
         function require() { return exports; };
     </script>
@@ -857,7 +871,7 @@
     <script type="text/javascript" src="./js/shared_controls.js?"></script>
     <script type="text/javascript" src="./js/honkalculate_controls.js?"></script>
 
-    <div style="clear:both;padding:20px;text-align:left">Created by Honko, maintained by Austin and pre
+    <div style="clear:both;padding:20px;text-align:left">Created by Honko, maintained by Austin and Kris
         <ul><li><a href="https://github.com/smogon/damage-calc/contributors" target="_blank">Contributors</a></li>
         <li><a href="https://www.smogon.com/forums/threads/pok%C3%A9mon-showdown-damage-calculator.3593546/" target="_blank">Bug Reports</a></li>
         <li><a href="https://github.com/smogon/damage-calc" target="_blank">GitHub repository</a></li></ul>
