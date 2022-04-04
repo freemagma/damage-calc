@@ -1,4 +1,5 @@
-﻿import * as I from './interface';
+﻿import {ROGUE_PATCH} from './species_patch';
+import * as I from './interface';
 import {toID, extend, DeepPartial, assignWithout} from '../util';
 
 export interface SpeciesData {
@@ -8729,7 +8730,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
   },
 };
 
-const SS: {[name: string]: SpeciesData} = extend(true, {}, SM, SS_PATCH);
+const SS: {[name: string]: SpeciesData} = extend(true, {}, SM, SS_PATCH, ROGUE_PATCH);
 
 delete SS['Pikachu-Starter'];
 delete SS['Eevee-Starter'];

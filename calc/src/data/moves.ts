@@ -1,46 +1,9 @@
-import * as I from '../data/interface';
+import {ROGUE_PATCH} from './moves_patch';
+import * as I from './interface';
 import {toID, DeepPartial, assignWithout, extend} from '../util';
 
-export interface MoveData {
-  readonly name?: string;
 
-  readonly type: I.TypeName;
-  readonly category?: I.MoveCategory;
-  // readonly flags?: I.MoveFlags;
-  readonly secondaries?: boolean;
-  readonly target?: I.MoveTarget;
-  readonly recoil?: [number, number];
-  readonly hasCrashDamage?: boolean;
-  readonly mindBlownRecoil?: boolean;
-  readonly struggleRecoil?: boolean;
-  readonly willCrit?: boolean;
-  readonly drain?: [number, number];
-  readonly priority?: number;
-  readonly self?: I.SelfOrSecondaryEffect | null;
-  readonly ignoreDefensive?: boolean;
-  readonly overrideOffensiveStat?: I.StatIDExceptHP;
-  readonly overrideDefensiveStat?: I.StatIDExceptHP;
-  readonly overrideOffensivePokemon?: 'target' | 'source';
-  readonly overrideDefensivePokemon?: 'target' | 'source';
-  readonly breaksProtect?: boolean;
-  readonly isZ?: boolean;
-  readonly isMax?: boolean;
-  readonly multihit?: number | number[];
-
-  readonly bp: number;
-  readonly zp?: number;
-  readonly maxPower?: number;
-
-  // FIXME: migrate these to flags (above) instead
-  readonly makesContact?: boolean;
-  readonly isPunch?: boolean;
-  readonly isBite?: boolean;
-  readonly isBullet?: boolean;
-  readonly isSound?: boolean;
-  readonly isPulse?: boolean;
-}
-
-const RBY: {[name: string]: MoveData} = {
+const RBY: {[name: string]: I.MoveData} = {
   '(No Move)': {bp: 0, category: 'Status', type: 'Normal'},
   Absorb: {bp: 20, type: 'Grass', drain: [1, 2]},
   Acid: {bp: 40, type: 'Poison'},
@@ -211,7 +174,7 @@ const RBY: {[name: string]: MoveData} = {
   Withdraw: {bp: 0, category: 'Status', type: 'Water'},
 };
 
-const GSC_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const GSC_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   Bide: {type: 'Normal'},
   Counter: {bp: 0},
   Dig: {bp: 60},
@@ -333,9 +296,9 @@ const GSC_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   'Vital Throw': {bp: 70, type: 'Fighting'},
 };
 
-const GSC: {[name: string]: MoveData} = extend(true, {}, RBY, GSC_PATCH);
+const GSC: {[name: string]: I.MoveData} = extend(true, {}, RBY, GSC_PATCH);
 
-const ADV_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const ADV_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   Acid: {target: 'allAdjacentFoes'},
   'Ancient Power': {makesContact: true},
   Bide: {makesContact: true},
@@ -562,9 +525,9 @@ const ADV_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   Yawn: {bp: 0, category: 'Status', type: 'Normal'},
 };
 
-const ADV: {[name: string]: MoveData} = extend(true, {}, GSC, ADV_PATCH);
+const ADV: {[name: string]: I.MoveData} = extend(true, {}, GSC, ADV_PATCH);
 
-const DPP_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const DPP_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   Absorb: {category: 'Special'},
   'Arm Thrust': {category: 'Physical'},
   Barrage: {category: 'Physical'},
@@ -1167,9 +1130,9 @@ const DPP_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   },
 };
 
-const DPP: {[name: string]: MoveData} = extend(true, {}, ADV, DPP_PATCH);
+const DPP: {[name: string]: I.MoveData} = extend(true, {}, ADV, DPP_PATCH);
 
-const BW_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const BW_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   'Air Slash': {secondaries: true},
   Blizzard: {secondaries: true},
   'Body Slam': {secondaries: true},
@@ -1670,11 +1633,11 @@ const BW_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   'Work Up': {bp: 0, type: 'Normal'},
 };
 
-const BW: {[name: string]: MoveData} = extend(true, {}, DPP, BW_PATCH);
+const BW: {[name: string]: I.MoveData} = extend(true, {}, DPP, BW_PATCH);
 
 delete BW['Faint Attack'];
 
-const XY_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const XY_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   'Ice Ball': {isBullet: true},
   'Knock Off': {bp: 65},
   Thief: {bp: 60},
@@ -1967,9 +1930,9 @@ const XY_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   'Venom Drench': {bp: 0, type: 'Poison', target: 'allAdjacentFoes'},
 };
 
-const XY: {[name: string]: MoveData} = extend(true, {}, BW, XY_PATCH);
+const XY: {[name: string]: I.MoveData} = extend(true, {}, BW, XY_PATCH);
 
-const SM_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const SM_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   'Ally Switch': {priority: 2},
   Aeroblast: {zp: 180},
   Barrage: {zp: 100},
@@ -2827,9 +2790,9 @@ const SM_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   },
 };
 
-const SM: {[name: string]: MoveData} = extend(true, {}, XY, SM_PATCH);
+const SM: {[name: string]: I.MoveData} = extend(true, {}, XY, SM_PATCH);
 
-const SS_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+const SS_PATCH: {[name: string]: DeepPartial<I.MoveData>} = {
   'Apple Acid': {
     bp: 80,
     type: 'Grass',
@@ -4125,7 +4088,7 @@ const SS_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   'Zing Zap': {maxPower: 130},
 };
 
-const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH);
+const SS: {[name: string]: I.MoveData} = extend(true, {}, SM, SS_PATCH, ROGUE_PATCH);
 
 const LGPE_MOVES = [
   'Baddy Bad',
@@ -4214,12 +4177,12 @@ class Move implements I.Move {
     'maxPower',
   ]);
 
-  constructor(name: string, data: MoveData, gen: number) {
+  constructor(name: string, data: I.MoveData, gen: number) {
     this.kind = 'Move';
     this.id = toID(name);
     this.name = name as I.MoveName;
 
-    // TODO: remove this once MoveData is migrated to flags and Object.assign just handles this
+    // TODO: remove this once I.MoveData is migrated to flags and Object.assign just handles this
     this.flags = {};
     if (data.makesContact) this.flags.contact = 1;
     if (data.isPunch) this.flags.punch = 1;

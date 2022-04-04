@@ -998,7 +998,7 @@ function getFirstValidSetOption() {
 	for (var i = 1; i < sets.length; i++) {
 		if (sets[i].id && sets[i].id.indexOf('(Blank Set)') === -1) return sets[i];
 	}
-	return undefined;
+	return {text: 'Diglett (Blank Set)', id: 'Diglett (Blank Set)'};
 }
 
 $(".notation").change(function () {
