@@ -1,4 +1,4 @@
-/* header */
+csss/* header */
 a img {
     border: 0;
 }
@@ -185,7 +185,7 @@ th {
     float: left;
     display: inline-block; /* required for honkaculate to work */
 }
-.poke-info {
+.poke-info, .additional-info {
     width: 30em;
 }
 .field-info, .poke-import {
@@ -325,18 +325,38 @@ th {
     display: inline-block;
     width: 6em;
 }
+
 .top label, .info-selectors label {
     display: inline-block;
     width: 5em;
 }
+
 .poke-info input:not([type]), .poke-info input[type="text"], .poke-info span {
     display: inline-block;
     width: 2.5em;
 }
+
 .poke-info input[type="number"] {
     display: inline-block;
     width: 3em;
 }
+
+/* additional info */
+.additional-info label {
+    display: inline-block;
+    width: 6em;
+}
+
+.additional-info input:not([type]), .poke-info input[type="text"], .poke-info span {
+    display: inline-block;
+    width: 2.5em;
+}
+
+.additional-info input[type="number"] {
+    display: inline-block;
+    width: 3em;
+}
+
 .info-group {
     margin: 1em 0;
 }

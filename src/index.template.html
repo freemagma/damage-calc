@@ -114,9 +114,10 @@
         </div>
     </div>
 
-    <div aria-label="Pok&eacute;mon 1" class="panel" role="region">
+    <div aria-label="Pok&eacute;mon 1" class="panel">
+        <div aria-label="Pok&eacute;mon 1 Info" role="region">
         <fieldset class="poke-info" id="p1">
-            <legend align="center">Pok&eacute;mon 1</legend>
+            <legend align="center">Your Pok&eacute;mon</legend>
             <input type="text" class="set-selector calc-trigger" />
             <span id="importedSetsOptions" style="width:auto; display:none">
                 <input type="checkbox" id="importedSets" /> Only show imported sets <br />
@@ -614,6 +615,16 @@
                 </select>
             </div>
         </fieldset>
+        </div>
+        <div aria-label="Additional Info" role="region">
+            <fieldset id="p1-additional" class="additional-info">
+                <legend align="center">Additional Info</legend>
+                    <div>
+                        <label for="levelScale">Level Scale</label>
+                        <input class="level-scale calc-trigger" id="levelScale" value="12" />
+                    </div>
+            </fieldset>
+        </div>
     </div>
 
     <div class="panel">
@@ -939,7 +950,7 @@
     </div>
     <div aria-label="Pok&eacute;mon 2" role="region" class="panel">
         <fieldset class="poke-info" id="p2">
-            <legend align="center">Pok&eacute;mon 2</legend>
+            <legend align="center">Opponent's Pok&eacute;mon</legend>
             <input type="text" class="set-selector calc-trigger" />
             <span id="importedSetsOptions" style="width:auto; display:none">
                 <input type="checkbox" id="importedSets" /> Only show imported sets <br />
