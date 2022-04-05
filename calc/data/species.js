@@ -40,6 +40,7 @@ var __values = (this && this.__values) || function(o) {
 var e_1, _a;
 exports.__esModule = true;
 
+var species_patch_1 = require("./species_patch");
 var util_1 = require("../util");
 var RBY = {
     Abra: {
@@ -8718,7 +8719,7 @@ var SS_PATCH = {
         baseSpecies: 'Zigzagoon'
     }
 };
-var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH);
+var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH, species_patch_1.ROGUE_PATCH);
 delete SS['Pikachu-Starter'];
 delete SS['Eevee-Starter'];
 exports.SPECIES = [{}, RBY, GSC, ADV, DPP, BW, XY, SM, SS];

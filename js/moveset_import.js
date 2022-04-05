@@ -190,13 +190,13 @@ function addToDex(poke) {
 		if (GEN1RANDOMBATTLE[poke.name] == undefined) GEN1RANDOMBATTLE[poke.name] = {};
 	} else {
 		if (SETDEX_SS[poke.name] == undefined) SETDEX_SS[poke.name] = {};
-		if (SETDEX_SM[poke.name] == undefined) SETDEX_SM[poke.name] = {};
-		if (SETDEX_XY[poke.name] == undefined) SETDEX_XY[poke.name] = {};
-		if (SETDEX_BW[poke.name] == undefined) SETDEX_BW[poke.name] = {};
-		if (SETDEX_DPP[poke.name] == undefined) SETDEX_DPP[poke.name] = {};
-		if (SETDEX_ADV[poke.name] == undefined) SETDEX_ADV[poke.name] = {};
-		if (SETDEX_GSC[poke.name] == undefined) SETDEX_GSC[poke.name] = {};
-		if (SETDEX_RBY[poke.name] == undefined) SETDEX_RBY[poke.name] = {};
+		// if (SETDEX_SM[poke.name] == undefined) SETDEX_SM[poke.name] = {};
+		// if (SETDEX_XY[poke.name] == undefined) SETDEX_XY[poke.name] = {};
+		// if (SETDEX_BW[poke.name] == undefined) SETDEX_BW[poke.name] = {};
+		// if (SETDEX_DPP[poke.name] == undefined) SETDEX_DPP[poke.name] = {};
+		// if (SETDEX_ADV[poke.name] == undefined) SETDEX_ADV[poke.name] = {};
+		// if (SETDEX_GSC[poke.name] == undefined) SETDEX_GSC[poke.name] = {};
+		// if (SETDEX_RBY[poke.name] == undefined) SETDEX_RBY[poke.name] = {};
 	}
 	if (poke.ability !== undefined) {
 		dexObject.ability = poke.ability;
@@ -232,20 +232,20 @@ function updateDex(customsets) {
 		for (var moveset in customsets[pokemon]) {
 			if (!SETDEX_SS[pokemon]) SETDEX_SS[pokemon] = {};
 			SETDEX_SS[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_SM[pokemon]) SETDEX_SM[pokemon] = {};
-			SETDEX_SM[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_XY[pokemon]) SETDEX_XY[pokemon] = {};
-			SETDEX_XY[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_BW[pokemon]) SETDEX_BW[pokemon] = {};
-			SETDEX_BW[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_DPP[pokemon]) SETDEX_DPP[pokemon] = {};
-			SETDEX_DPP[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_ADV[pokemon]) SETDEX_ADV[pokemon] = {};
-			SETDEX_ADV[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_GSC[pokemon]) SETDEX_GSC[pokemon] = {};
-			SETDEX_GSC[pokemon][moveset] = customsets[pokemon][moveset];
-			if (!SETDEX_RBY[pokemon]) SETDEX_RBY[pokemon] = {};
-			SETDEX_RBY[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_SM[pokemon]) SETDEX_SM[pokemon] = {};
+			// SETDEX_SM[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_XY[pokemon]) SETDEX_XY[pokemon] = {};
+			// SETDEX_XY[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_BW[pokemon]) SETDEX_BW[pokemon] = {};
+			// SETDEX_BW[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_DPP[pokemon]) SETDEX_DPP[pokemon] = {};
+			// SETDEX_DPP[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_ADV[pokemon]) SETDEX_ADV[pokemon] = {};
+			// SETDEX_ADV[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_GSC[pokemon]) SETDEX_GSC[pokemon] = {};
+			// SETDEX_GSC[pokemon][moveset] = customsets[pokemon][moveset];
+			// if (!SETDEX_RBY[pokemon]) SETDEX_RBY[pokemon] = {};
+			// SETDEX_RBY[pokemon][moveset] = customsets[pokemon][moveset];
 		}
 	}
 	localStorage.customsets = JSON.stringify(customsets);

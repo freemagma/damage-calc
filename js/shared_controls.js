@@ -68,6 +68,7 @@ function legacyStatToStat(st) {
 // input field validation
 var bounds = {
 	"level": [0, 100],
+	"level-scale": [0, 100],
 	"base": [1, 255],
 	"evs": [0, 252],
 	"ivs": [0, 31],
@@ -87,6 +88,22 @@ function validate(obj, min, max) {
 }
 
 // auto-calc stats and current HP on change
+$(".level-scale").focusin(function () {
+    $(this).data('val', $(this).val());
+    $(this).data('oppLevel', $("#p2").find(".level").val());
+    $(this).data('myLevel', $("#p1").find(".level").val());
+});
+$(".level-scale").keyup(function () {
+    var prev = parseInt($(this).data('val'));
+    var current = parseInt($(this).val());
+    // update levels with the levelScale
+    var oppLevelObj = $("#p2").find(".level");
+    var oppLevel = parseInt($(this).data('oppLevel'));
+    oppLevelObj.val(oppLevel + current - prev);
+    var myLevelObj = $("#p1").find(".level");
+    var myLevel = parseInt($(this).data('myLevel'));
+    myLevelObj.val(myLevel + current - prev);
+});
 $(".level").keyup(function () {
 	var poke = $(this).closest(".poke-info");
 	calcHP(poke);
@@ -471,7 +488,14 @@ $(".set-selector").change(function () {
 		}
 		if (regSets || randset) {
 			var set = regSets ? correctHiddenPower(setdex[pokemonName][setName]) : randset;
-			pokeObj.find(".level").val(set.level);
+            var levelScale = parseInt($("#levelScale").val());
+            if (pokeObj.attr("id") == "p2") {
+                var pokeLevel = pokeObj.find(".level");
+			    pokeLevel.val(set.level + levelScale - 100);
+                pokeLevel.prop("disabled", true);
+            } else {
+			    pokeObj.find(".level").val(levelScale);
+            }
 			pokeObj.find(".hp .evs").val((set.evs && set.evs.hp !== undefined) ? set.evs.hp : 0);
 			pokeObj.find(".hp .ivs").val((set.ivs && set.ivs.hp !== undefined) ? set.ivs.hp : 31);
 			pokeObj.find(".hp .dvs").val((set.dvs && set.dvs.hp !== undefined) ? set.dvs.hp : 15);
@@ -505,7 +529,9 @@ $(".set-selector").change(function () {
 				$(this).closest('.poke-info').find(".extraSetMoves").html(formatMovePool(randset.moves));
 			}
 		} else {
-			pokeObj.find(".level").val(100);
+            var levelScale = $("#levelScale").val();
+			pokeObj.find(".level").val(levelScale);
+			pokeObj.find(".level").prop("disabled", false);
 			pokeObj.find(".hp .evs").val(0);
 			pokeObj.find(".hp .ivs").val(31);
 			pokeObj.find(".hp .dvs").val(15);
@@ -993,12 +1019,12 @@ $(".gen").change(function () {
 });
 
 function getFirstValidSetOption() {
-	var sets = getSetOptions();
-	// NB: The first set is never valid, so we start searching after it.
-	for (var i = 1; i < sets.length; i++) {
-		if (sets[i].id && sets[i].id.indexOf('(Blank Set)') === -1) return sets[i];
-	}
-	return undefined;
+	// var sets = getSetOptions();
+	// // NB: The first set is never valid, so we start searching after it.
+	// for (var i = 1; i < sets.length; i++) {
+	// 	if (sets[i].id && sets[i].id.indexOf('(Blank Set)') === -1) return sets[i];
+	// }
+	return {text: 'Diglett (Blank Set)', id: 'Diglett (Blank Set)'};
 }
 
 $(".notation").change(function () {
@@ -1300,6 +1326,7 @@ $(document).ready(function () {
 			return text.toUpperCase().indexOf(term.toUpperCase()) === 0 || text.toUpperCase().indexOf(" " + term.toUpperCase()) >= 0;
 		}
 	});
+    $("#levelScale").val(12);
 	$(".set-selector").val(getFirstValidSetOption().id);
 	$(".set-selector").change();
 	$(".terrain-trigger").bind("change keyup", getTerrainEffects);

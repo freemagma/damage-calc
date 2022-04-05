@@ -145,3 +145,36 @@ export interface Nature extends Data<NatureName> {
     readonly plus?: StatID;
     readonly minus?: StatID;
 }
+export interface MoveData {
+    readonly name?: string;
+    readonly type: TypeName;
+    readonly category?: MoveCategory;
+    readonly secondaries?: boolean;
+    readonly target?: MoveTarget;
+    readonly recoil?: [number, number];
+    readonly hasCrashDamage?: boolean;
+    readonly mindBlownRecoil?: boolean;
+    readonly struggleRecoil?: boolean;
+    readonly willCrit?: boolean;
+    readonly drain?: [number, number];
+    readonly priority?: number;
+    readonly self?: SelfOrSecondaryEffect | null;
+    readonly ignoreDefensive?: boolean;
+    readonly overrideOffensiveStat?: StatIDExceptHP;
+    readonly overrideDefensiveStat?: StatIDExceptHP;
+    readonly overrideOffensivePokemon?: 'target' | 'source';
+    readonly overrideDefensivePokemon?: 'target' | 'source';
+    readonly breaksProtect?: boolean;
+    readonly isZ?: boolean;
+    readonly isMax?: boolean;
+    readonly multihit?: number | number[];
+    readonly bp: number;
+    readonly zp?: number;
+    readonly maxPower?: number;
+    readonly makesContact?: boolean;
+    readonly isPunch?: boolean;
+    readonly isBite?: boolean;
+    readonly isBullet?: boolean;
+    readonly isSound?: boolean;
+    readonly isPulse?: boolean;
+}

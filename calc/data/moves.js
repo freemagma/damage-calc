@@ -40,6 +40,7 @@ var __values = (this && this.__values) || function(o) {
 var e_1, _a, e_2, _b;
 exports.__esModule = true;
 
+var moves_patch_1 = require("./moves_patch");
 var util_1 = require("../util");
 var RBY = {
     '(No Move)': { bp: 0, category: 'Status', type: 'Normal' },
@@ -4111,7 +4112,7 @@ var SS_PATCH = {
     'Zen Headbutt': { maxPower: 130 },
     'Zing Zap': { maxPower: 130 }
 };
-var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH);
+var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH, moves_patch_1.ROGUE_PATCH);
 var LGPE_MOVES = [
     'Baddy Bad',
     'Bouncy Bubble',

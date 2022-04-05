@@ -1,39 +1,6 @@
-import * as I from '../data/interface';
-export interface MoveData {
-    readonly name?: string;
-    readonly type: I.TypeName;
-    readonly category?: I.MoveCategory;
-    readonly secondaries?: boolean;
-    readonly target?: I.MoveTarget;
-    readonly recoil?: [number, number];
-    readonly hasCrashDamage?: boolean;
-    readonly mindBlownRecoil?: boolean;
-    readonly struggleRecoil?: boolean;
-    readonly willCrit?: boolean;
-    readonly drain?: [number, number];
-    readonly priority?: number;
-    readonly self?: I.SelfOrSecondaryEffect | null;
-    readonly ignoreDefensive?: boolean;
-    readonly overrideOffensiveStat?: I.StatIDExceptHP;
-    readonly overrideDefensiveStat?: I.StatIDExceptHP;
-    readonly overrideOffensivePokemon?: 'target' | 'source';
-    readonly overrideDefensivePokemon?: 'target' | 'source';
-    readonly breaksProtect?: boolean;
-    readonly isZ?: boolean;
-    readonly isMax?: boolean;
-    readonly multihit?: number | number[];
-    readonly bp: number;
-    readonly zp?: number;
-    readonly maxPower?: number;
-    readonly makesContact?: boolean;
-    readonly isPunch?: boolean;
-    readonly isBite?: boolean;
-    readonly isBullet?: boolean;
-    readonly isSound?: boolean;
-    readonly isPulse?: boolean;
-}
+import * as I from './interface';
 export declare const MOVES: {
-    [name: string]: MoveData;
+    [name: string]: I.MoveData;
 }[];
 export declare class Moves implements I.Moves {
     private readonly gen;
@@ -77,6 +44,6 @@ declare class Move implements I.Move {
     readonly maxPower?: number;
     readonly multihit?: number | number[];
     private static readonly FLAGS;
-    constructor(name: string, data: MoveData, gen: number);
+    constructor(name: string, data: I.MoveData, gen: number);
 }
 export {};
