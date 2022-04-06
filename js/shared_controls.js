@@ -103,6 +103,13 @@ $(".level-scale").keyup(function () {
     var myLevelObj = $("#p1").find(".level");
     var myLevel = parseInt($(this).data('myLevel'));
     myLevelObj.val(myLevel + current - prev);
+    // update stats
+    $(".poke-info").each(function () {
+        var poke = $(this);
+        console.log(poke.attr("id"));
+        calcHP(poke);
+        calcStats(poke);
+    });
 });
 $(".level").keyup(function () {
 	var poke = $(this).closest(".poke-info");
