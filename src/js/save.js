@@ -124,7 +124,6 @@ function boxMonFromStorage(storage, index) {
     let start = 0x4 + index * SIZEOF_BOXMON;
     let end = start + SIZEOF_BOXMON;
     let mon = new DataView(storageUint8Array.slice(start, end).buffer);
-    console.log(mon.byteLength);
     if (boxMonLevel(mon) == 0)
         return null;
     return mon;
