@@ -106,7 +106,6 @@ $(".level-scale").keyup(function () {
     // update stats
     $(".poke-info").each(function () {
         var poke = $(this);
-        console.log(poke.attr("id"));
         calcHP(poke);
         calcStats(poke);
     });

@@ -243,7 +243,9 @@ function saveDataToSets(data) {
         }
     }
 
+    $("#levelScale").trigger("focusin");
     $("#levelScale").val(levelScale);
+    $("#levelScale").trigger("keyup");
 	$("textarea.import-team-text").val(sets);
 }
 
