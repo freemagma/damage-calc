@@ -11,6 +11,21 @@ export declare const ROGUE_PATCH: {
             sp: number;
         };
     };
+    Bellsprout: {
+        bs: {
+            at: number;
+        };
+    };
+    Weepinbell: {
+        bs: {
+            at: number;
+        };
+    };
+    Victreebel: {
+        bs: {
+            at: number;
+        };
+    };
     Kabuto: {
         bs: {
             sa: number;
@@ -34,11 +49,62 @@ export declare const ROGUE_PATCH: {
             sa: number;
         };
     };
+    Dunsparce: {
+        bs: {
+            sp: number;
+        };
+    };
     Swinub: {
         bs: {
             df: number;
             sa: number;
             sd: number;
+        };
+    };
+    Lileep: {
+        bs: {
+            at: number;
+            sa: number;
+        };
+    };
+    Bronzor: {
+        bs: {
+            at: number;
+            sa: number;
+            sp: number;
+        };
+    };
+    Bronzong: {
+        bs: {
+            sa: number;
+            sp: number;
+        };
+    };
+    Skorupi: {
+        bs: {
+            hp: number;
+            at: number;
+            sa: number;
+            sd: number;
+        };
+    };
+    Croagunk: {
+        bs: {
+            hp: number;
+            at: number;
+            df: number;
+            sd: number;
+            sp: number;
+        };
+    };
+    Trubbish: {
+        bs: {
+            hp: number;
+        };
+    };
+    Garbodor: {
+        bs: {
+            hp: number;
         };
     };
     Pancham: {
@@ -57,22 +123,6 @@ export declare const ROGUE_PATCH: {
             at: number;
             sa: number;
             sd: number;
-        };
-    };
-    Flapple: {
-        bs: {
-            sa: number;
-            sd: number;
-            sp: number;
-        };
-    };
-    Appletun: {
-        bs: {
-            at: number;
-            df: number;
-            sa: number;
-            sd: number;
-            sp: number;
         };
     };
 };

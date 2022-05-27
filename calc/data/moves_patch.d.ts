@@ -29,13 +29,16 @@ export declare const ROGUE_PATCH: {
     "Iron Tail": {
         bp: number;
     };
-    Ancientpower: {
+    "Ancient Power": {
         bp: number;
     };
     "Future Sight": {
         bp: number;
     };
     "Blaze Kick": {
+        bp: number;
+    };
+    "Crush Claw": {
         bp: number;
     };
     "Silver Wind": {
@@ -60,6 +63,9 @@ export declare const ROGUE_PATCH: {
         bp: number;
     };
     Inferno: {
+        bp: number;
+    };
+    "Wild Charge": {
         bp: number;
     };
 };

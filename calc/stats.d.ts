@@ -13,8 +13,8 @@ export declare const Stats: {
     IVToDV(iv: number): number;
     DVToIV(dv: number): number;
     DVsToIVs(dvs: Readonly<Partial<StatsTable>>): Partial<StatsTable<number>>;
-    calcStat(gen: Generation, stat: StatID, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
-    calcStatADV(natures: Natures, stat: StatID, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
+    calcStat(gen: Generation, stat: StatID, base: number, iv: number, ev: number, level: number, nature?: string): number;
+    calcStatADV(natures: Natures, stat: StatID, base: number, iv: number, ev: number, level: number, nature?: string): number;
     calcStatRBY(stat: StatID, base: number, iv: number, level: number): number;
     calcStatRBYFromDV(stat: StatID, base: number, dv: number, level: number): number;
     getHiddenPowerIVs(gen: Generation, hpType: HPTypeName): Partial<StatsTable<number>> | undefined;
